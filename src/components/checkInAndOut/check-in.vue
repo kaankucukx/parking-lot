@@ -1,14 +1,14 @@
 <template>
   <modal :esc="true" @close="$emit('close')">
     <h6>Plate Number</h6>
-    <input v-model="customer.plate" type="text" name="plate-number" id="" class="plate-number">
+    <input v-model="customer.plate" @keyup="$emit('getCar', customer)" type="text" name="plate-number" id="" class="plate-number">
     <h6>Color</h6>
     <div class="check-in-color-input">
       <span :style="`background: ${inputColor}`" class="check-in-color"></span>
       <input v-model="customer.carColor" type="text" name="color" id="">
     </div>
     <div class="check-in--buttons">
-      <Button :cls="''" :w="''" :h="''" :title="'CHECK IN'" @buttonClicked="" />
+      <Button :cls="''" :w="''" :h="''" :title="'CHECK IN'" @buttonClicked="$emit('saveCar')" />
     </div>
   </modal>
 </template>

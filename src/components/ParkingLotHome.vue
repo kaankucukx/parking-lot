@@ -31,9 +31,9 @@
       </template>
     </div>
 
-    <check-in v-if="checkIn" @close="checkIn = false"/>
+    <check-in v-if="checkIn" @close="checkIn = false" @saveCar="CheckIn" @getCar="getCheckInCar"/>
 
-    <check-out v-if="checkOut" @close="checkOut = false" @remove="CheckOut" @getID="getCheckoutID"/>
+    <check-out v-if="checkOut" :checkOutData="checkedOutCar" @close="checkOut = false" @remove="CheckOut" @getID="getCheckoutID"/>
 
   </div>
 </template>
@@ -50,7 +50,9 @@ export default {
       checkIn: false,
       checkOut: false,
       lots: [],
+      checkInCar: {},
       checkOutPlate: null,
+      checkedOutCar: null,
     };
   },
   created() {
@@ -59,11 +61,17 @@ export default {
     });
   },
   methods: {
+    getCheckInCar(o) {
+      this.checkInCar = o
+    },
     CheckIn() {
       const Park = this.lots.sort((a, b) => a.orderNo - b.orderNo).filter(f => f.parking === false)[0];
       console.log(Park);
       db.collection('lots').doc(Park.id).update({
         parking: true,
+        parkTime: this.$moment().add(new Date(), 'd').format(),
+        color: this.checkInCar.carColor,
+        plate: this.checkInCar.plate,
       });
     },
     getCheckoutID(p) {
@@ -71,12 +79,28 @@ export default {
       this.checkOutPlate = this.lots.filter(f => f.plate === p);
     },
     CheckOut() {
-      db.collection('lots').doc(this.checkOutPlate[0].id).update({
-        parking: false,
-        plate: '',
-        parkTime: null,
-        color: '',
-      });
+      db.collection('lots').doc(this.checkOutPlate[0].id).get().then((e) => {
+        console.log(e.data().parkTime, 'PARKTIME');
+        
+        const now = this.$moment().add(new Date().getDay()).format('DD-MM-YYYY, h:mm');
+        const duration = this.$moment(e.data().parkTime).fromNow(true)
+        // const duration = this.$moment(e.data().parkTime).add(duration().asHours());
+        // const duration = this.$moment().duration(now.diff(e.parkTime));
+        // const hours = duration.asHours();
+        const customer = {
+          time: duration,
+          refNO: this.checkOutPlate[0].id,
+        }
+        this.checkedOutCar = customer
+      }).then(() => {
+          db.collection('lots').doc(this.checkOutPlate[0].id).update({
+            parking: false,
+            plate: '',
+            parkTime: null,
+            color: '',
+          });
+      })
+    
     },
     makeData() {
       for (let index = 0; index < 100; index++) {
