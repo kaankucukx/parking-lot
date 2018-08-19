@@ -1,14 +1,24 @@
 <template>
   <div class="parking-lots">
-    <span class="parking-slot--number">01</span>
-    <div class="parking-lots--inner"></div>
+    <span class="parking-slot--number">{{lot.orderNo}}</span>
+    <div :class="{'parking-lots--active' : !lot.parking, 'parking-lots--deactive' : lot.parking}">
+			<span v-if="lot.plate">{{lot.plate}}</span>
+		</div>
 
   </div>
 </template>
 
-<script></script>
+<script>
 export default {
   name: 'ParkingLots',
+  props: {
+    lot: {
+      type: Object,
+      default: () => ({
+
+      }),
+    },
+  },
 };
 </script>
 
@@ -28,16 +38,21 @@ export default {
 	&:hover {
 	}
 }
-.parking-lots--inner {
+.parking-lots--active {
 	background: #b4c4bd;
+	flex: 1;
+	margin: 0px 3px 0px 3px;
+}
+.parking-lots--deactive {
+	background: #c4b4b4;
 	flex: 1;
 	margin: 0px 3px 0px 3px;
 }
 .parking-slot--number {
 	font-size: 25px;
 	text-align: center;
-  color: wheat;
-  font: normal 400 1.5rem/1.67 "Gotham-Bold", sans-serif;
+	color: wheat;
+	font: normal 400 1.5rem/1.67 "Gotham-Bold", sans-serif;
 	letter-spacing: -0.4px;
 }
 </style>
