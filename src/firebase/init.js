@@ -12,4 +12,10 @@ const config = {
 
 const justmopApp = firebase.initializeApp(config);
 
+const firestore = firebase.firestore();
+const settings = {
+  timestampsInSnapshots: true,
+};
+firestore.settings(settings);
+
 export default justmopApp.firestore();

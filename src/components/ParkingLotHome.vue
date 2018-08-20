@@ -19,16 +19,16 @@
         </ul>
         <div class="main--description--button">
           <Button :cls="''" :w="''" :h="''" :title="'CHECK IN'" @buttonClicked="checkIn = true" />
-          // eslint-disable-next-line
+
           <Button :cls="'checkOut'" :w="''" :h="''" :title="'CHECK OUT'" @buttonClicked="checkOut = true" />
         </div>
         <div class="main--description--button">
-          // eslint-disable-next-line
+
           <Button :cls="'button-full-width'" :w="''" :h="''" :title="'DASHBOARD'" @buttonClicked="navToDashborad" />
         </div>
       </div>
       <div class="main-inner">
-        <img :src="require('@/assets/img/hmmbird.png')" alt="justmop challenge">
+        <img :src="require('@/assets/img/hmmbird.png')" alt="justmop challenge" @click="makeData">
       </div>
     </div>
 
@@ -118,17 +118,25 @@ export default {
         });
     },
     makeData() {
-      for (let index = 0; index < 100; index++) {
+      for (let index = 0; index < 101; index++) {
         db.collection('lots').add({
-          color: 'red',
+          color: '',
           orderNo: index,
-          parkTime: this.$moment().add(new Date(), 'd').format(),
+          parkTime: null,
           parking: false,
-          plate: '34AB1234',
-          hoomanTime: this.$moment()
-            .add(new Date().getDay() === 6 ? 2 : 1, 'd')
-            .format('DD-MM-YYYY, h:mm'),
+          plate: '',
+          hoomanTime: null,
         });
+        // db.collection('lots').add({
+        //   color: '',
+        //   orderNo: index,
+        //   parkTime: this.$moment().add(new Date(), 'd').format(),
+        //   parking: false,
+        //   plate: '34AB1234',
+        //   hoomanTime: this.$moment()
+        //     .add(new Date().getDay() === 6 ? 2 : 1, 'd')
+        //     .format('DD-MM-YYYY, h:mm'),
+        // });
       }
     },
     navToDashborad() {

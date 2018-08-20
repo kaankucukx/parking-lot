@@ -14,9 +14,9 @@
         <div>{{lot.orderNo}}</div>
         <div>{{lot.color}}</div>
         <div>{{lot.plate}}</div>
-        <div>{{lot.id}}</div>
+        <div v-if="lot.plate">{{lot.id}}</div>
         <div>{{lot.hoomanTime}}</div>
-        <div v-html="generateTimeElapsed(lot.parkTime)"></div>
+        <div v-if="lot.plate" v-html="generateTimeElapsed(lot.parkTime)"></div>
       </div>
     </div>
   </div>
