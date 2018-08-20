@@ -11,7 +11,6 @@ import VueFire from 'vuefire';
 Vue.use(VueFire);
 
 Vue.prototype.$moment = require('moment')
-// require('moment/locale/tr')
 
 Vue.config.productionTip = false;
 

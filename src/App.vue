@@ -1,18 +1,11 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
 * {
-	font-family: "Avenir", Helvetica, Arial, sans-serif;
-	line-height: 100%;
-	letter-spacing: -2px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: left;
@@ -38,6 +31,7 @@ p {
 	color: #9ba2aa;
 	font: normal 400 1.5rem/100% "Gotham-Medium", sans-serif;
 	letter-spacing: -0.4px;
+	margin: 0;
 }
 
 ul {
