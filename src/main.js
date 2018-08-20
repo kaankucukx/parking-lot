@@ -1,4 +1,3 @@
-
 import '@/firebase/init';
 
 import Vue from 'vue';
@@ -6,11 +5,7 @@ import App from './App.vue';
 import router from './router';
 import './registerServiceWorker';
 
-import VueFire from 'vuefire';
-
-Vue.use(VueFire);
-
-Vue.prototype.$moment = require('moment')
+Vue.prototype.$moment = require('moment');
 
 Vue.config.productionTip = false;
 

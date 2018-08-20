@@ -5,7 +5,9 @@
       <!-- <h1>{{ msg }}</h1> -->
       <div class="main-inner main--description">
         <h1>Awesome Parking Lot in the CITY.</h1>
-        <p>Tens of HTML cars, fast parking. Flow checkout is easy just provide the plate of your vehicle, pay and go!.</p>
+        <p>Tens of HTML cars, fast parking.
+          Flow checkout is easy just provide
+          the plate of your vehicle, pay and go!.</p>
         <ul class="main--list">
           <li>Awesome Parking Slot Description</li>
           <li>Awesome Parking Slot Description</li>
@@ -17,9 +19,11 @@
         </ul>
         <div class="main--description--button">
           <Button :cls="''" :w="''" :h="''" :title="'CHECK IN'" @buttonClicked="checkIn = true" />
+          // eslint-disable-next-line
           <Button :cls="'checkOut'" :w="''" :h="''" :title="'CHECK OUT'" @buttonClicked="checkOut = true" />
         </div>
         <div class="main--description--button">
+          // eslint-disable-next-line
           <Button :cls="'button-full-width'" :w="''" :h="''" :title="'DASHBOARD'" @buttonClicked="navToDashborad" />
         </div>
       </div>
@@ -67,19 +71,20 @@ export default {
       this.checkInCar = o;
     },
     CheckIn() {
+      // eslint-disable-next-line
       const Park = this.lots.sort((a, b) => a.orderNo - b.orderNo).filter(f => f.parking === false)[0];
       db.collection('lots').doc(Park.id).update({
         parking: true,
         parkTime: this.$moment().add(new Date(), 'd').format(),
         hoomanTime: this.$moment()
-          .add(new Date().getDay() == 6 ? 2 : 1, 'd')
+          .add(new Date().getDay() === 6 ? 2 : 1, 'd')
           .format('DD-MM-YYYY, h:mm'),
         color: this.checkInCar.carColor,
         plate: this.checkInCar.plate,
-      }).then((c) => {
+      }).then(() => {
         const customer = {
           time: this.$moment()
-            .add(new Date().getDay() == 6 ? 2 : 1, 'd')
+            .add(new Date().getDay() === 6 ? 2 : 1, 'd')
             .format('DD-MM-YYYY, h:mm'),
           refNO: Park.id,
           plate: this.checkInCar.plate,
@@ -121,7 +126,7 @@ export default {
           parking: false,
           plate: '34AB1234',
           hoomanTime: this.$moment()
-            .add(new Date().getDay() == 6 ? 2 : 1, 'd')
+            .add(new Date().getDay() === 6 ? 2 : 1, 'd')
             .format('DD-MM-YYYY, h:mm'),
         });
       }
@@ -166,9 +171,9 @@ export default {
 	.main-inner {
 		flex: 1;
 		background: #323b46;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
 	}
 }
 

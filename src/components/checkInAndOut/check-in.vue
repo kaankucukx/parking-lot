@@ -2,12 +2,17 @@
   <modal :esc="true" @close="$emit('close')">
     <div v-if="!checkInData">
       <h6>Plate Number</h6>
-      <input v-model="customer.plate" @keyup="$emit('getCar', customer)" type="text" name="plate-number" placeholder="PLATE NUMBER"
+      <input v-model="customer.plate"
+      @keyup="$emit('getCar', customer)"
+      type="text" name="plate-number" placeholder="PLATE NUMBER"
         class="plate-number input--text">
       <h6>Color</h6>
       <div class="check-in-color-input">
         <span :style="`background: ${inputColor}`" class="check-in-color"></span>
-        <input v-model="customer.carColor" type="text" required name="color" id="" class="input--text" placeholder="SET COLOR">
+        <input v-model="customer.carColor"
+        type="text" required
+        name="color" id=""
+        class="input--text" placeholder="SET COLOR">
       </div>
       <div v-if="error"><h2 class="error">{{error}}</h2></div>
       <div class="check-in--buttons">
@@ -28,7 +33,6 @@
         <p class="checkin-success--heading">Reference No:</p>
         <p class="checkin-success--desc">{{checkInData.refNO}}</p>
       </div>
-    </div>
     </div>
   </modal>
 </template>
@@ -66,7 +70,7 @@ export default {
     },
   },
   watch: {
-    'customer.plate': function (val, oldVal) {
+    'customer.plate': function (val) {
       this.customer.plate = val.toUpperCase();
     },
   },

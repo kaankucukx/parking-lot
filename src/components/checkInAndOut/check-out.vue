@@ -2,10 +2,16 @@
   <modal :esc="true" @close="$emit('close')">
     <div v-if="!checkOutData">
       <h6>Plate Number</h6>
-      <input v-model="customer.plate" type="text" name="plate-number" id="" class="plate-number input--text" @keyup="$emit('getID', customer.plate)">
+      <input v-model="customer.plate"
+      type="text"
+      name="plate-number"
+      class="plate-number input--text" @keyup="$emit('getID', customer.plate)">
        <div v-if="error"><h2 class="error">{{error}}</h2></div>
       <div class="check-in--buttons">
-        <Button :cls="'checkOut'" :w="''" :h="''" :title="'CHECK OUT'" @buttonClicked="handleClick()" />
+        <Button
+        :cls="'checkOut'"
+        :w="''"
+        :h="''" :title="'CHECK OUT'" @buttonClicked="handleClick()" />
       </div>
     </div>
     <div v-if="checkOutData" class="checkout-success">
@@ -46,14 +52,14 @@ export default {
   methods: {
     handleClick() {
       if (this.customer.plate) {
-        this.$emit('remove', this.customer.plate)
+        this.$emit('remove', this.customer.plate);
       } else {
         this.error = 'You must set all the fields.';
       }
     },
   },
   watch: {
-    'customer.plate': function (val, oldVal) {
+    'customer.plate': function (val) {
       this.customer.plate = val.toUpperCase();
     },
   },
