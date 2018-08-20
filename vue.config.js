@@ -49,5 +49,18 @@ module.exports = {
       },
       ],
     },
+    devServer: {
+      contentBase: './dist',
+      historyApiFallback: {
+        rewrites: [{
+          from: /^\/$/,
+          to: '/',
+        }],
+      },
+      hot: true,
+      compress: true,
+      open: true,
+      port: 3333,
+    },
   },
 };
