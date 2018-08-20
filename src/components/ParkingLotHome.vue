@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="main-inner">
-        <h1 @click="CheckIn()">ÇOK ACAYİP GÜZEL RESİM</h1>
+        <img :src="require('@/assets/img/hmmbird.png')" alt="justmop challenge">
       </div>
     </div>
 
@@ -34,7 +34,7 @@
       </template>
     </div>
 
-    <check-in v-if="checkIn" @close="checkIn = false" @saveCar="CheckIn" @getCar="getCheckInCar"/>
+    <check-in v-if="checkIn" :checkInData="checkedInCar" @close="checkIn = false" @saveCar="CheckIn" @getCar="getCheckInCar"/>
 
     <check-out v-if="checkOut" :checkOutData="checkedOutCar" @close="checkOut = false" @remove="CheckOut" @getID="getCheckoutID"/>
 
@@ -45,9 +45,7 @@ import db from '@/firebase/init';
 
 export default {
   name: 'ParkingLotHome',
-  props: {
-    msg: String,
-  },
+
   data() {
     return {
       checkIn: false,
@@ -56,6 +54,7 @@ export default {
       checkInCar: {},
       checkOutPlate: null,
       checkedOutCar: null,
+      checkedInCar: null,
     };
   },
   created() {
@@ -69,7 +68,6 @@ export default {
     },
     CheckIn() {
       const Park = this.lots.sort((a, b) => a.orderNo - b.orderNo).filter(f => f.parking === false)[0];
-      console.log(Park);
       db.collection('lots').doc(Park.id).update({
         parking: true,
         parkTime: this.$moment().add(new Date(), 'd').format(),
@@ -78,6 +76,16 @@ export default {
           .format('DD-MM-YYYY, h:mm'),
         color: this.checkInCar.carColor,
         plate: this.checkInCar.plate,
+      }).then((c) => {
+        const customer = {
+          time: this.$moment()
+            .add(new Date().getDay() == 6 ? 2 : 1, 'd')
+            .format('DD-MM-YYYY, h:mm'),
+          refNO: Park.id,
+          plate: this.checkInCar.plate,
+          slot: Park.orderNo,
+        };
+        this.checkedInCar = customer;
       });
     },
     getCheckoutID(p) {
@@ -126,6 +134,9 @@ export default {
     checkOut() {
       if (this.checkedOutCar) {
         this.checkedOutCar = null;
+      }
+      if (this.checkedInCar) {
+        this.checkedInCar = null;
       }
     },
   },
@@ -184,5 +195,10 @@ export default {
 	flex-flow: row wrap;
 	padding: 150px;
 	background: #37404d;
+}
+h1 {
+	color: #fff;
+	font: normal 400 3rem/100% "Gotham-Black", sans-serif;
+	letter-spacing: -0.4px;
 }
 </style>

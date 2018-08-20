@@ -89,4 +89,9 @@ span {
 		background: #88d1b0;
 	}
 }
+.disable {
+	opacity: 0.5;
+	pointer-events: none;
+	cursor: help;
+}
 </style>

@@ -2,10 +2,10 @@
   <modal :esc="true" @close="$emit('close')">
     <div v-if="!checkOutData">
       <h6>Plate Number</h6>
-      <input v-model="customer.plate" type="text" name="plate-number" id="" class="plate-number" @keyup="$emit('getID', customer.plate)">
-
+      <input v-model="customer.plate" type="text" name="plate-number" id="" class="plate-number input--text" @keyup="$emit('getID', customer.plate)">
+       <div v-if="error"><h2 class="error">{{error}}</h2></div>
       <div class="check-in--buttons">
-        <Button :cls="'checkOut'" :w="''" :h="''" :title="'CHECK OUT'" @buttonClicked="$emit('remove', customer.plate)" />
+        <Button :cls="'checkOut'" :w="''" :h="''" :title="'CHECK OUT'" @buttonClicked="handleClick()" />
       </div>
     </div>
     <div v-if="checkOutData" class="checkout-success">
@@ -40,7 +40,22 @@ export default {
       customer: {
         plate: null,
       },
+      error: null,
     };
+  },
+  methods: {
+    handleClick() {
+      if (this.customer.plate) {
+        this.$emit('remove', this.customer.plate)
+      } else {
+        this.error = 'You must set all the fields.';
+      }
+    },
+  },
+  watch: {
+    'customer.plate': function (val, oldVal) {
+      this.customer.plate = val.toUpperCase();
+    },
   },
   components: {
     Button: () =>
@@ -73,9 +88,11 @@ input {
 	border-style: none;
 	border-bottom: 1px solid grey;
 	appearance: none;
-	&:focus {
-		outline: 0;
-	}
+}
+
+.input--text {
+	font: normal 400 2rem/1.67 "Gotham-Black", sans-serif;
+	letter-spacing: -0.4px;
 }
 
 .checkout-success {
@@ -97,5 +114,10 @@ input {
 		text-transform: uppercase;
 		color: #323b46;
 	}
+}
+.error {
+	color: rgb(182, 59, 59);
+	font: normal 400 1.5rem/1.67 "Gotham-Black", sans-serif;
+	letter-spacing: -0.4px;
 }
 </style>

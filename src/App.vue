@@ -47,4 +47,9 @@ li {
 a {
 	color: #88d1b0;
 }
+input {
+	&:focus {
+		outline: 0;
+	}
+}
 </style>

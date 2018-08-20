@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <input v-model="search" type="text" />
+    <input v-model="search" type="text" class="dashboard--input" placeholder="Search"/>
     <div class="dashboard-listing">
       <div class="dashboard-headings">
         <div>Slot</div>
@@ -54,14 +54,38 @@ export default {
 	display: flex;
 	flex-flow: column nowrap;
 }
+.dashboard--input {
+	padding: 50px 150px;
+	min-height: 100px;
+	background: #323b46;
+	border: none;
+	color: #9ba2aa;
+	font: normal 400 4rem/120% "Gotham-Bold", sans-serif;
+	letter-spacing: -1.7px;
+}
+
 .dashboard-headings,
 .dashboard--list {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: center;
+	background: #4e565f;
 	align-items: center;
 	div {
 		flex: 1;
 	}
+}
+.dashboard-headings div {
+	padding: 10px 20px;
+	color: azure;
+	font: normal 400 1.1rem/100% "Gotham-Medium", sans-serif;
+	letter-spacing: -0.7px;
+}
+.dashboard--list div {
+	padding: 10px 20px;
+
+	color: azure;
+	font: normal 400 1rem/100% "Gotham-Book", sans-serif;
+	letter-spacing: -0.4px;
 }
 </style>

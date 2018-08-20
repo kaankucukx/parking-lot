@@ -53,7 +53,6 @@ export default {
     this.$el.focus();
   },
   beforeDestroy() {
-
     document.body.style.overflowY = 'auto';
   },
   methods: {
@@ -66,7 +65,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .modal-close {
 	color: #fff;
 	float: right;
@@ -82,17 +81,8 @@ export default {
 }
 
 .modal-container {
-  margin-top: 3%;
-  min-width: 40%;
-}
-
-.modal-enter .modal-container {
-	transform: scale(1.5) translate3d(0, 0, 0);
-	will-change: transform;
-}
-.modal-leave-active .modal-container {
-	transform: scale(1) translate3d(0, 0, 0);
-	will-change: transform;
+	margin-top: 3%;
+	min-width: 40%;
 }
 .modal-header {
 	background: transparent;
@@ -101,30 +91,16 @@ export default {
 	justify-content: flex-end;
 }
 .modal-body {
-  background: #fff;
-  padding: 50px;
+	background: #fff;
+	padding: 50px;
 }
-
-.modal-enter-active,
-.modal-leave-active {
-	transition: opacity 0.25s;
-	will-change: opacity;
-}
-
-/* .modal-overlay {
-	background-color: rgba(0, 0, 0, 0.8);
-	position: fixed;
-
-	width: 100%;
-	height: 100%;
-} */
 
 .modal-wrapper {
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	height: 100%;
 }
 
 .modal-footer {
@@ -132,4 +108,38 @@ export default {
 	background: #fff;
 	align-items: center;
 }
+
+.modal-enter-active,
+.modal-leave-active {
+	transform: scale(1) translateZ(0);
+	will-change: transform;
+	transition: all 0.5s;
+}
+.modal-enter, .modal-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	transform: translateZ(0) translateY(-20px);
+	will-change: transform;
+	opacity: 0;
+}
+
+/* .modal-enter {
+	transition: all 1s ease;
+	will-change: opacity;
+	opacity: 1;
+}
+.modal-leave-active {
+	transition: all 1s ease;
+	will-change: opacity;
+	opacity: 0;
+} */
+
+/* .modal-enter .modal-container {
+	transform: scale(1.5) translate3d(0, 0, 0);
+	will-change: transform;
+	transition: all 1s ease;
+}
+.modal-leave-active .modal-container {
+	transform: scale(1) translate3d(0, 0, 0);
+	will-change: transform;
+	transition: all 1s ease;
+} */
 </style>
