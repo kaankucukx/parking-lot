@@ -47,6 +47,10 @@ li {
 a {
 	color: #88d1b0;
 }
+img {
+	object-fit: contain;
+	opacity: 0.3;
+}
 input {
 	&:focus {
 		outline: 0;

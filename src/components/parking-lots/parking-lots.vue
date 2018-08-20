@@ -39,8 +39,6 @@ export default {
 	border-top: 1px solid #88d1b0;
 	border-right: 1px solid #88d1b0;
 	border-left: 1px solid #88d1b0;
-	&:hover {
-	}
 }
 .parking-lots--deactive__border {
 	border-top: 1px solid #d18888;
@@ -64,7 +62,6 @@ export default {
 	letter-spacing: -0.4px;
 }
 .parking-slot--number {
-	font-size: 25px;
 	text-align: center;
 	color: wheat;
 	font: normal 400 1.5rem/1.67 "Gotham-Bold", sans-serif;

@@ -166,6 +166,9 @@ export default {
 	.main-inner {
 		flex: 1;
 		background: #323b46;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 	}
 }
 

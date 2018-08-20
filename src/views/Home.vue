@@ -1,12 +1,10 @@
 <template>
   <div class="home">
-    <parking-lot-home msg="Justmop Parking Lot Project is Ready to GO! ! !"/>
+    <parking-lot-home/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: 'home',
   components: {
