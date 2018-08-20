@@ -18,9 +18,6 @@ export default {
     return {
     };
   },
-  created() {
-
-  },
   components: {
   },
   methods: {
