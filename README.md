@@ -1,4 +1,4 @@
-# justmop-parking-lot
+parking-lot
 
 ## Project details
 
