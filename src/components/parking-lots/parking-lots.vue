@@ -2,10 +2,9 @@
   <div class="parking-lots" :class="{'parking-lots--deactive__border' : lot.parking}">
     <span class="parking-slot--number">{{lot.orderNo}}</span>
     <div :class="{'parking-lots--active' : !lot.parking, 'parking-lots--deactive' : lot.parking}">
-			<span v-if="lot.plate">{{lot.plate}}</span>
-			<span v-if="lot.parking" v-html="generateTimeElapsed(lot.parkTime)"></span>
-		</div>
-
+	<span v-if="lot.plate">{{lot.plate}}</span>
+	<span v-if="lot.parking" v-html="generateTimeElapsed(lot.parkTime)"></span>
+    </div>
   </div>
 </template>
 
