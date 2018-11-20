@@ -3,14 +3,14 @@ import 'firebase/firestore';
 
 const config = {
   apiKey: 'AIzaSyCTctcWzALm4ImNt09xyQWYyOlEH8GEJNY',
-  authDomain: 'justmop-33.firebaseapp.com',
-  databaseURL: 'https://justmop-33.firebaseio.com',
-  projectId: 'justmop-33',
-  storageBucket: 'justmop-33.appspot.com',
-  messagingSenderId: '23025062781',
+  authDomain: '****.firebaseapp.com',
+  databaseURL: 'https://***.firebaseio.com',
+  projectId: 'lot-33',
+  storageBucket: '***-33.appspot.com',
+  messagingSenderId: '230250627***',
 };
 
-const justmopApp = firebase.initializeApp(config);
+const slotApp = firebase.initializeApp(config);
 
 const firestore = firebase.firestore();
 const settings = {
@@ -18,4 +18,4 @@ const settings = {
 };
 firestore.settings(settings);
 
-export default justmopApp.firestore();
+export default slotApp.firestore();
