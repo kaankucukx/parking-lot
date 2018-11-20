@@ -2,11 +2,16 @@
 
 ## Project details
 
-This project is developed by Kaan KÜÇÜK (905356460073), in terms of Code Challenge by Justmop.
+This project is developed in terms of Code Challenge
 
 Project developed with JavaScript/ES6 features and Vue Framework. Sits on top of Webpack bundler, Code formatting done according to guidence ( AirBNB ) with Vue compatability.
 
 Project also includes PWA and scss/sass used as preproccesors.
+
+Firebase Firestore used for back-end operations.
+
+
+- If there is no lot present, tap on the bird logo to fill the states.
 
 ## Project setup
 

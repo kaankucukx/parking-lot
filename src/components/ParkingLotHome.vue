@@ -38,7 +38,7 @@
       </template>
     </div>
 
-    <check-in v-if="checkIn" :checkInData="checkedInCar" @close="checkIn = false" @saveCar="CheckIn" @getCar="getCheckInCar"/>
+    <check-in v-if="checkIn" :checkInData="checkedInCar" @close="checkIn = false" @saveCar="CheckIn" @getCar="getCheckInCar" />
 
     <check-out v-if="checkOut" :checkOutData="checkedOutCar" @close="checkOut = false" @remove="CheckOut" @getID="getCheckoutID"/>
 
