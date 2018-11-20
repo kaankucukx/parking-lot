@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const config = {
-  apiKey: 'AIzaSyCTctcWzALm4ImNt09xyQWYyOlEH8GEJNY',
+  apiKey: 'AIzaSyCTctcWzALm4ImNt09xyQWYyOlEH8G***',
   authDomain: '****.firebaseapp.com',
   databaseURL: 'https://***.firebaseio.com',
   projectId: 'lot-33',
